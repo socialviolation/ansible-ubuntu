@@ -89,11 +89,6 @@ bootstrap-before-script:
 bootstrap: setup_inventory_and_group_vars bootstrap-before-install bootstrap-before-script
 bootstrap: ## Installs dependencies needed to run playbook
 
-bootstrap-check:
-bootstrap-check: ## Check that PATH and requirements are correct
-	@ansible --version | grep "python version"
-	@python3 -m pip list | grep psutil
-
 check: DARGS?=
 check: ## Checks personal-computer.yml playbook
 	@$(ANSIBLE) --check
@@ -105,7 +100,7 @@ install: ## Installs everything via personal-computer.yml playbook
 	# no planned test coverage to nautilus-mounts as it deals with file mounts
 
 all: ## Does most everything with Ansible and Make targets
-all: bootstrap bootstrap-check install non-ansible
+all: bootstrap install non-ansible
 
 non-ansible:
 non-ansible: ## Runs all non-ansible make targets for fresh install (all target)
@@ -128,9 +123,9 @@ docker:
 docker: ## Install Docker and Docker-Compose
 	@$(ANSIBLE) --tags="docker"
 
-jetbrains-mono:
-jetbrains-mono: ## Install JetBrains Mono font
-	@$(ANSIBLE) --tags="jetbrains-mono"
+#jetbrains-mono:
+#jetbrains-mono: ## Install JetBrains Mono font
+#	@$(ANSIBLE) --tags="jetbrains-mono"
 
 common-snaps:
 common-snaps: ## Install Common Snaps
@@ -210,17 +205,6 @@ gtk3-icon-browser:
 	# Installs in gnome-preferences role
 	@gtk3-icon-browser &
 
-hyper: ## Install Hyper (A terminal built on web technologies)
-hyper: gsettings-keybindings
-	@$(ANSIBLE) --tags="hyper"
-	gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/hyper/ name 'hyper'
-	gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/hyper/ command '/usr/local/bin/hyper'
-	gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/hyper/ binding '<Super>t'
-
-nordvpn:
-nordvpn: ## Install Peek (GIF Screen Recorder) using a PPA and apt
-	@$(ANSIBLE) --tags="nordvpn"
-
 stacer:
 stacer: ## Install Stacer (Material System Utility)
 	@$(ANSIBLE) --tags="stacer"
@@ -232,32 +216,6 @@ flatpak: ## Install Peek (GIF Screen Recorder) using a PPA and apt
 cherrytree:
 cherrytree: ## Install Cherrytree, using Flatpak
 	@$(ANSIBLE) --tags="flatpak" -e '{"flatpak_applications": ["com.giuspen.cherrytree"]}'
-
-steam:
-steam: ## Install Steam, using Flatpak
-	@$(ANSIBLE) --tags="flatpak" -e '{"flatpak_applications": ["com.valvesoftware.Steam"]}'
-
-okular:
-okular: ## Install Okular, using Flatpak
-	@$(ANSIBLE) --tags="flatpak" -e '{"flatpak_applications": ["org.kde.okular"]}'
-
-evolution:
-evolution: ## Install Evolution Email/Calendar/Tasks Client, using Flatpak
-	@$(ANSIBLE) --tags="flatpak,evolution-remove-apt" -e '{"flatpak_applications": ["org.gnome.Evolution"]}'
-
-protonmail-bridge:
-protonmail-bridge: ## Install Protonmail Bridge Deb from their website
-	@$(ANSIBLE) --tags="flatpak" -e '{"flatpak_applications": ["ch.protonmail.protonmail-bridge"]}'
-
-tresorit: ## Install Tresorit
-tresorit:
-	wget -O ~/Downloads/tresorit_installer.run https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run
-	chmod +x ~/Downloads/tresorit_installer.run
-	$(echo $0) ~/Downloads/tresorit_installer.run
-
-libreoffice:
-libreoffice: ## Install LibreOffice Office Suite, using Flatpak
-	@$(ANSIBLE) --tags="flatpak,libreoffice-remove-apt" -e '{"flatpak_applications": ["org.libreoffice.LibreOffice"]}'
 
 yarn:
 yarn: ## Installs Yarn (and Nodejs)
@@ -273,17 +231,8 @@ wifi-analyzer: ## Installs LinSSID Wifi Analyzer
 	# Attribution: podcasts.apple.com/us/podcast/linux-unplugged/id687598126?i=1000475937121
 	@$(ANSIBLE) --tags="wifi-analyzer"
 
-app-image:
-app-image: ## Install App Image Launcher
-	@$(ANSIBLE) --tags="app-image"
-
 ulauncher:
 ulauncher: ## Install ULauncher App Launcher (CTRL+spacebar)
 	@$(ANSIBLE) --tags="ulauncher"
-
-caffeine:
-caffeine: ## Install caffeine (screen stay awake toggle, plus indicator)
-	@$(ANSIBLE) --tags="caffeine"
-
 
 .DEFAULT_GOAL := help

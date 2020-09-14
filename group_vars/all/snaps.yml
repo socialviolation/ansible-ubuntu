@@ -1,5 +1,6 @@
 ---
 snaps_chat:
+  - name: "slack"
     classic: "yes"
 snaps_common:
   - name: "snap-store"
@@ -9,14 +10,19 @@ snaps_common:
     channel: "beta"
 snaps_development:
   - name: "alacritty"
+    channel: "edge"
+    classic: "yes"
   - name: "postman"
   - name: "gitkraken"
+    classic: "yes"
   - name: "code"
     classic: "yes"
   - name: "intellij-idea-ultimate"
     classic: "yes"
   - name: "go"
+    classic: "yes"
   - name: "google-cloud-sdk"
+    classic: "yes"
   - name: "rider"
     classic: "yes"
   - name: "webstorm"

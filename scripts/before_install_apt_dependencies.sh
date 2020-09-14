@@ -9,3 +9,5 @@ sudo apt install -y software-properties-common
 # Linting
 sudo apt install -y yamllint
 sudo apt install -y shellcheck
+
+sudo apt install ansible -y

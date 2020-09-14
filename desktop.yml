@@ -10,7 +10,7 @@
     # installs font
     - {role: iancleary.jetbrains_mono, tags: ['jetbrains-mono']}
     # sets gnome defaults
-    - {role: jetbrains_mono, tags: ['jetbrains-mono']}
+#    - {role: jetbrains_mono, tags: ['jetbrains-mono']}
     - {role: ticktick, tags: ['ticktick']}
     - {role: common-snaps, tags: ['common-snaps']}
     - {role: chat-clients, tags: ['chat-clients']}
