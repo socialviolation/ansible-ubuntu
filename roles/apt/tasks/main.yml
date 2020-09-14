@@ -1,0 +1,7 @@
+---
+
+- name: Apt install
+  become: true
+  apt:
+    name: "{{ apt_packages }}"
+    state: present

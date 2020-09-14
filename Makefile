@@ -56,7 +56,7 @@ ifeq "$(HOSTNAME)" "$(RUNNER)"
 	ANSIBLE = $(INSTALL_ANSIBLE_ROLES) && $(ANSIBLE_PLAYBOOK)
 endif
 
-# Custome GNOME keybindings
+# Custom GNOME keybindings
 CUSTOM_KEYBINDING_BASE = /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
 
 # - to suppress if it doesn't exist
@@ -80,18 +80,13 @@ bootstrap-before-install:
 	# Apt Dependencies (removes apt ansible)
 	bash scripts/before_install_apt_dependencies.sh
 
-bootstrap-install:
-bootstrap-install:
-	# Python3 Dependencies (install python3 ansible)
-	bash scripts/install_python3_dependencies.sh
-
 bootstrap-before-script:
 bootstrap-before-script:
 	# Ensure "$$HOME/.local/bin" is part of PATH on future shell sessions
 	# The top of the Makefile takes care of this in the initial session
 	bash scripts/before_script_path_fix.sh
 
-bootstrap: setup_inventory_and_group_vars bootstrap-before-install bootstrap-install bootstrap-before-script
+bootstrap: setup_inventory_and_group_vars bootstrap-before-install bootstrap-before-script
 bootstrap: ## Installs dependencies needed to run playbook
 
 bootstrap-check:
@@ -109,7 +104,7 @@ install: ## Installs everything via personal-computer.yml playbook
 	# ticktick doesn't work on fresh install for some reason
 	# no planned test coverage to nautilus-mounts as it deals with file mounts
 
-all: ## Does most eveything with Ansible and Make targets
+all: ## Does most everything with Ansible and Make targets
 all: bootstrap bootstrap-check install non-ansible
 
 non-ansible:
@@ -117,25 +112,9 @@ non-ansible: ## Runs all non-ansible make targets for fresh install (all target)
 
 	# No user input required
 	make flameshot-keybindings
-
-	# Ubuntu 20.04 defaults
-	make python-three-eight-install
-	make python-three-eight-supporting
-
-lint:  ## Lint the repo
-lint:
-	bash scripts/lint.sh
-
-docs-develop:
-docs-develop: ## setup pipenv to develop docs
-	pipenv
-	pipenv run python3 -m pip install -r requirements.txt
-	pipenv shell
-	# make docs-live
-
-docs-live:
-docs-live: ## create live docs
-	bash scripts/docs-live.sh
+apt:
+apt: ## Install apt
+	@$(ANSIBLE) --tags="apt"
 
 zsh:
 zsh: ## Install zsh and oh-my-zsh
@@ -152,65 +131,6 @@ docker: ## Install Docker and Docker-Compose
 jetbrains-mono:
 jetbrains-mono: ## Install JetBrains Mono font
 	@$(ANSIBLE) --tags="jetbrains-mono"
-
-nautilus-mounts:
-nautilus-mounts: ## Setup for CIFS Network Mounts, with Nautilus Scripts
-	@$(ANSIBLE) --tags="nautilus-mounts"
-
-pulseaudio:
-pulseaudio: ## Install pulseaudio GUI
-	@$(ANSIBLE) --tags="pulseaudio"
-
-python-three-eight-install: ## Install python3.8 using apt (main install)
-python-three-eight-install:
-
-	sudo apt-get update
-
-	# Start by updating the packages list and installing the prerequisites:
-	sudo apt install software-properties-common
-
-	# Once the repository is enabled, install Python 3.8 with: (added libpython3.8-dev for pip installs)
-	# - httptools wasn't installing correctly until adding it
-	# - see: https://github.com/huge-success/sanic/issues/1503#issuecomment-469031275
-	sudo apt update
-	sudo apt install -y python3.8 libpython3.8-dev
-
-	# At this point, Python 3.8 is installed on your Ubuntu system and ready to be used.
-	# You can verify it by typing:
-	python3.8 --version
-
-python-three-eight-supporting: ## Install useful packages
-python-three-eight-supporting:
-
-	# python3 pip
-	sudo apt install -y python3-pip
-
-	# upgrade pip
-	python3.8 -m pip install --user --upgrade pip
-	-python3.8 -m pip install --upgrade keyrings.alt --user
-	-python3.8 -m pip install --user --upgrade setuptools
-
-	# python3 pytest
-	sudo apt install -y python3-pytest
-
-	# At this point, Python 3.7 is installed on your Ubuntu system and ready to be used.
-	# You can verify it by typing:
-	python3.8 --version
-	python3.8 -m pip --version
-	python3.8 -m pytest --version
-
-	python3.8 -m pip install --user twine
-	python3.8 -m pip install --user wheel
-	python3.8 -m pip install --user flit
-	python3.8 -m pip install --user cookiecutter
-	python3.8 -m pip install --user pipenv
-	python3.8 -m pip install --user pre-commit
-	# https://python-poetry.org/docs/
-	python3.8 -m pip install --user poetry
-	sudo apt-get install -y python3-venv
-	# https://github.com/python-poetry/poetry/issues/721#issuecomment-623399861
-	# Ubuntu 20.04 https://wiki.ubuntu.com/FocalFossa/ReleaseNotes#Python3_by_default
-	-sudo apt install python-is-python3
 
 common-snaps:
 common-snaps: ## Install Common Snaps
