@@ -1,28 +1,7 @@
-# ansible-desktop
+# ansible-ubuntu
 
-[![Test](https://github.com/iancleary/ansible-desktop/workflows/Test/badge.svg)](https://github.com/iancleary/ansible-desktop/actions)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/0a90303b-4694-4407-964b-0caa5a68827c/deploy-status)](https://app.netlify.com/sites/iancleary-ansible-desktop/deploys)
-
-## Ansible Playbook to configure my laptops and desktops
-
-I care about not having to think too much about my setup between machines.
-Especially when I want to get right to work.
-
-For that reason, it is very comfortable for me
-to have the same base configuration
-on each machine (look, feel,
-keyboard shortcuts, core software, etc.).
-
-### My journey to the current state of this repo
-
-* I found a cool bash script on the internet (*I didn't understand most of it*) 🤷
-* I modified cool bash script for my needs and it worked! 🚀
-* I learned about Makefiles. 😄
-* I proceeded to do everything with Makefiles. 🤩🤩🤩
-* I got tired of running successive Make targets over and again 😐.
-* I used Ansible at work and decided to take a course to learn more about it. 🤓
-* I put off actually taking the plunge to use Ansible. 🕒🕕🕘🕛
-* I finally took the plunge and decided to use Ansible for my configuration. ✔️
+* [blog](https://dev.to/iancleary/automating-your-desktop-with-ansible-20jk)
+* [source repo](https://github.com/iancleary/ansible-desktop/)
 
 ## Calendar Versioning
 
@@ -30,45 +9,20 @@ This project adheres to [Calendar Versioning](https://calver.org/), YYYY.MINOR.M
 
 ## Supported Ubuntu LTS Versions
 
-I will support the LTS versions I use. There are no plans to support non-LTS versions.
-
 | LTS | Last Supported Branch/Tag  |
 |:-------------|:-------------:|
 |  Ubuntu 20.04 | [main](https://github.com/iancleary/ansible-desktop)|
-|  Ubuntu 18.04 | [2020.1.0](https://github.com/iancleary/ansible-desktop/releases/tag/v2020.1.0)|
-
-## Ansible Galaxy Roles
-
-There is broader LTS and Distribution support in the following roles:
-
-| Role | Description |
-|:-------------|:-------------:|
-|  [iancleary.jetbrains_mono](https://github.com/iancleary/ansible-role-jetbrains_mono) | installs [Jetbrains-Mono](https://www.jetbrains.com/lp/mono/) font|
-|  [iancleary.zsh_antibody](https://github.com/iancleary/ansible-role-zsh_antibody) | Installs [Zsh](https://www.zsh.org/), [oh-my-zsh](https://github.com/ohmyzsh/ohmyzsh), and the [antibody](https://getantibody.github.io/) plugin manager|
 
 ## Core Software
-
---------------------------
-
-This isn't exactly the list of Ansible roles,
-but below is a list of what the repo helps install.
 
 ### Application Base
 
 * `Flatpak`,
 * `Snap`,
 
-### AppImageLauncher
-
-* [AppImageLauncher](https://github.com/TheAssassin/AppImageLauncher), see the [Integrate any AppImage into the Ubuntu Desktop](https://dev.to/strotgen/integrate-tinkerwell-or-any-appimage-into-the-ubuntu-desktop-le9) article.
-
 ### Application Launcher
 
 * [ULauncher](https://github.com/ULauncher/ULauncher), A ctrl + spacebar productivity bar, Ulauncher is inspired by Alfred for macOS and similar semantic search tools that followed in its wake.
-
-### Backups
-
-* `Timeshift` <https://github.com/teejee2008/timeshift>,
 
 ### Chat Clients
 
@@ -93,14 +47,6 @@ but below is a list of what the repo helps install.
 ### Email
 
 * HEY Mail, by Basecamp, [hey-main snap](https://snapcraft.io/hey-mail)
-
-### File Storage
-
-* `Tresorit`,
-
-### Games
-
-* `Steam`,
 
 ### GNOME Configuration
 
@@ -153,16 +99,6 @@ for beautiful images of my code - right inside my terminal,
 > Flameshot keybinding to the Print Screen key using `gsettings`
 
 * [Peek](https://github.com/phw/peek) animated GIF screen recorder,
-
-### Text Editors
-
-* `Sublime Text`,
-
-### Utilities
-
-* [Caffeine](https://launchpad.net/caffeine),
-* [Breaktimer](https://snapcraft.io/breaktimer),
-* `Nordvpn`,
 
 ### Web Browsers
 

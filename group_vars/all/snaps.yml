@@ -1,8 +1,5 @@
 ---
 snaps_chat:
-  - name: "signal-desktop"
-  - name: "telegram-desktop"
-  - name: "slack"
     classic: "yes"
 snaps_common:
   - name: "snap-store"
@@ -15,17 +12,14 @@ snaps_common:
   - name: "standard-notes"
   - name: "authy"
     channel: "beta"
-  - name: "hey-mail"
 snaps_development:
   - name: "postman"
+  - name: "gitkraken"
   - name: "code"
     classic: "yes"
   # - "codium" # Code without telemetry
-  - name: "sublime-text"
-    classic: "yes"
 snaps_web_browsers:
   - name: "chromium"
-  # - name: "firefox" # Using deb until gnome-extensions installations work with firefox snap
 snaps_web_browsers_plugs:
   - plug: "home"
     app: "chromium"
