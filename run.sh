@@ -50,8 +50,6 @@ sudo apt -y autoremove
 # Install non-ansible (no user input required)
 make non-ansible
 
-# Needs to run last as requires user input
-make tresorit
 
 # Restart to start using machine
 # Prompt?

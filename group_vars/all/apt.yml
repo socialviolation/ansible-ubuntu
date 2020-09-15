@@ -1,5 +1,8 @@
 ---
 apt_packages:
+  - wget
+  - apt-transport-https
   - fzf
   - tmux
   - xclip
+  # - kubectx

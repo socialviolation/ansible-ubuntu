@@ -42,27 +42,8 @@ USER_STRING = '{"users": [{"username": "$(shell whoami)", "skip_zshrc": true}]}'
 INSTALL_ANSIBLE_ROLES = ansible-galaxy install -r requirements.yml
 ANSIBLE_PLAYBOOK = ansible-playbook desktop.yml -v -i $(INVENTORY) -l $(HOSTNAME) -e $(USER_STRING)
 
-ANSIBLE = $(INSTALL_ANSIBLE_ROLES) && $(ANSIBLE_PLAYBOOK) --ask-become-pass
-
-# Travis CI Ansible Playbook Command (doesn't prompt for password)
-TRAVIS = travis
-ifeq "$(HOSTNAME)" "$(TRAVIS)"
-	ANSIBLE = $(INSTALL_ANSIBLE_ROLES) && $(ANSIBLE_PLAYBOOK)
-endif
-
-# GitHub Actions Ansible Playbook Command (doesn't prompt for password)
-RUNNER = runner
-ifeq "$(HOSTNAME)" "$(RUNNER)"
-	ANSIBLE = $(INSTALL_ANSIBLE_ROLES) && $(ANSIBLE_PLAYBOOK)
-endif
-
 # Custom GNOME keybindings
 CUSTOM_KEYBINDING_BASE = /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
-
-# - to suppress if it doesn't exist
--include make.env
-
-$(warning ANSIBLE is $(ANSIBLE))
 
 help:
 # http://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
@@ -79,6 +60,11 @@ bootstrap-before-install:
 bootstrap-before-install:
 	# Apt Dependencies (removes apt ansible)
 	bash scripts/before_install_apt_dependencies.sh
+
+bootstrap-install:
+bootstrap-install:
+	# Python3 Dependencies (install python3 ansible)
+	bash scripts/install_p3_deps.sh
 
 bootstrap-before-script:
 bootstrap-before-script:
@@ -136,7 +122,7 @@ chat-clients: ## Install Chat Client Snaps
 	@$(ANSIBLE) --tags="chat-clients"
 
 development-tools:
-development-tools: ## Install VS Code, Postman, and Sublime Text Snaps
+development-tools:
 	@$(ANSIBLE) --tags="development-tools"
 
 web-browsers:
@@ -208,28 +194,6 @@ gtk3-icon-browser:
 stacer:
 stacer: ## Install Stacer (Material System Utility)
 	@$(ANSIBLE) --tags="stacer"
-
-flatpak:
-flatpak: ## Install Peek (GIF Screen Recorder) using a PPA and apt
-	@$(ANSIBLE) --tags="flatpak"
-
-cherrytree:
-cherrytree: ## Install Cherrytree, using Flatpak
-	@$(ANSIBLE) --tags="flatpak" -e '{"flatpak_applications": ["com.giuspen.cherrytree"]}'
-
-yarn:
-yarn: ## Installs Yarn (and Nodejs)
-	# This role takes care of $$PATH
-	@$(ANSIBLE) --tags="yarn"
-
-ticktick:
-ticktick: ## Installs TickTick using yarn global Nativefier
-	@$(ANSIBLE) --tags="ticktick"
-
-wifi-analyzer:
-wifi-analyzer: ## Installs LinSSID Wifi Analyzer
-	# Attribution: podcasts.apple.com/us/podcast/linux-unplugged/id687598126?i=1000475937121
-	@$(ANSIBLE) --tags="wifi-analyzer"
 
 ulauncher:
 ulauncher: ## Install ULauncher App Launcher (CTRL+spacebar)

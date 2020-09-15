@@ -31,19 +31,6 @@ gnome_preferences:
   # Desktop Icons
   - key: "/org/gnome/desktop/background/show-desktop-icons"
     value: "false"
-  # Nautilus (File Manager) Usability
-  # Nautilus - Default Zoom Level
-  - key: "/org/gnome/nautilus/icon-view/default-zoom-level"
-    value: "'standard'"
-  # Nautilus - Executable Text Activation
-  - key: "/org/gnome/nautilus/preferences/executable-text-activation"
-    value: "'ask'"
-  # Nautilus - Sort Directories
-  - key: "/org/gtk/Settings/FileChooser/sort-directories-first"
-    value: "true"
-  # Nautilus - User Tree View
-  - key: "/org/gnome/nautilus/list-view/use-tree-view"
-    value: "true"
   # Shell - Attach Modal Dialogues
   - key: "/org/gnome/shell/overrides/attach-modal-dialogs"
     value: "false"
@@ -51,3 +38,5 @@ gnome_preferences:
   # Workspaces Only on Primary
   - key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
     value: "false"
+  - key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
+    value: "BOTTOM"

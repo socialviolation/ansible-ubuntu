@@ -2,25 +2,8 @@
 code_extensions:
   ## Ansible
   - vscoss.vscode-ansible
-
-  ## Docker and Remote Development
-  - ms-azuretools.vscode-docker
-  - ms-vscode-remote.vscode-remote-extensionpack
   ## General Development
   - christian-kohler.path-intellisense
   - vscode-icons-team.vscode-icons
-  - riccardoNovaglia.missinglineendoffile
-  - shardulm94.trailing-spaces
   ## Git Utilities
   - eamodio.gitlens
-  - donjayamanne.githistory
-  - mhutchie.git-graph
-
-  ## Markdown Linting
-  - DavidAnson.vscode-markdownlint
-  ## Spellchecking
-  - streetsidesoftware.code-spell-checker
-  ## Themes
-  - sdras.night-owl
-  ## YAML
-  - redhat.vscode-yaml  # doesn't allow hostname in .travis.yml
