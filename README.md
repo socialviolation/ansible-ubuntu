@@ -63,4 +63,3 @@ for beautiful images of my code - right inside my terminal,
 
 * `Chromium`,
 * `Firefox`,
-

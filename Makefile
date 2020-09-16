@@ -42,6 +42,8 @@ USER_STRING = '{"users": [{"username": "$(shell whoami)", "skip_zshrc": true}]}'
 INSTALL_ANSIBLE_ROLES = ansible-galaxy install -r requirements.yml
 ANSIBLE_PLAYBOOK = ansible-playbook desktop.yml -v -i $(INVENTORY) -l $(HOSTNAME) -e $(USER_STRING)
 
+ANSIBLE=$(INSTALL_ANSIBLE_ROLES) && $(ANSIBLE_PLAYBOOK) --ask-become-pass
+
 # Custom GNOME keybindings
 CUSTOM_KEYBINDING_BASE = /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings
 

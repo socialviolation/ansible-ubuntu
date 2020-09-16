@@ -1,8 +1,8 @@
 ---
 apt_packages:
+  - arc-theme
   - wget
   - apt-transport-https
   - fzf
   - tmux
   - xclip
-  # - kubectx

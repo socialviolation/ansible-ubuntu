@@ -39,4 +39,6 @@ gnome_preferences:
   - key: "/org/gnome/shell/overrides/workspaces-only-on-primary"
     value: "false"
   - key: "/org/gnome/shell/extensions/dash-to-dock/dock-position"
-    value: "BOTTOM"
+    value: "'BOTTOM'"
+  - key: "/org/gnome/desktop/interface/gtk-theme"
+    value: "'Arc-Dark'"
