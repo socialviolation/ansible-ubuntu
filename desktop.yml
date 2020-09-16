@@ -1,16 +1,12 @@
 ---
-- hosts: adeptus
+- hosts: all
   connection: local
   roles:
     - {role: apt, tags: ['apt']}
     - {role: iancleary.zsh_antibody, tags: ['zsh']}
     - {role: yadm, tags: ['yadm']}
     - {role: docker, tags: ['docker']}
-#    - {role: yarn, tags: ['nodejs', 'yarn']}
-    # installs font
-    - {role: iancleary.jetbrains_mono, tags: ['jetbrains-mono']}
-    # sets gnome defaults
-    - {role: jetbrains_mono, tags: ['jetbrains-mono']}
+    - {role: font-settings, tags: ['font-settings']}
     - {role: common-snaps, tags: ['common-snaps']}
     - {role: chat-clients, tags: ['chat-clients']}
     - {role: web-browsers, tags: ['web-browsers']}
@@ -21,5 +17,4 @@
     - {role: gnome-extensions, tags: ['gnome-extensions']}
     - {role: gnome-keybindings, tags: ['gnome-keybindings']}
     - {role: gnome-preferences, tags: ['gnome-preferences']}
-    - {role: stacer, tags: ['stacer']}
     - {role: ulauncher, tags: ['ulauncher']}

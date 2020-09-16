@@ -111,9 +111,9 @@ docker:
 docker: ## Install Docker and Docker-Compose
 	@$(ANSIBLE) --tags="docker"
 
-#jetbrains-mono:
-#jetbrains-mono: ## Install JetBrains Mono font
-#	@$(ANSIBLE) --tags="jetbrains-mono"
+fonts:
+fonts:
+	@$(ANSIBLE) --tags="font-settings"
 
 common-snaps:
 common-snaps: ## Install Common Snaps

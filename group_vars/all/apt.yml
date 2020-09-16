@@ -6,3 +6,6 @@ apt_packages:
   - fzf
   - tmux
   - xclip
+  - neovim
+  - python-neovim
+  - python3-neovim

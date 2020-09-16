@@ -1,0 +1,27 @@
+---
+- name: Check if fonts already installed
+  become: false
+  stat:
+    path: ~/.local/share/fonts/
+  register: powerline_fonts
+
+- name: Ensure git is installed
+  become: true
+  apt:
+    pkg: "git"
+    state: present
+  when: powerline_fonts.stat.exists == False and ansible_os_family == "Debian"
+
+- name: Cloning Powerline fonts
+  become: false
+  git:
+    repo: "{{ powerline_fonts_repo }}"
+    dest: "{{ powerline_fonts_dir }}"
+    accept_hostkey: "no"
+    version: "master"
+  when: powerline_fonts.stat.exists == False
+
+- name: Installing Powerline fonts
+  become: false
+  command: "{{ powerline_fonts_dir }}/install.sh"
+  when: powerline_fonts.stat.exists == False
