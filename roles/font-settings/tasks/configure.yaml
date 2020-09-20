@@ -28,3 +28,9 @@
     key: "/org/gnome/desktop/interface/text-scaling-factor"
     value: "0.9"
     state: present
+
+- name: Favourite Apps Bar
+  dconf:
+    key: "/org/gnome/shell/favorite-apps"
+    value: ['org.gnome.Nautilus.desktop', 'chromium_chromium.desktop', 'rider_rider.desktop', 'code_code.desktop', 'alacritty_alacritty.desktop', 'postman_postman.desktop', 'gitkraken_gitkraken.desktop', 'intellij-idea-ultimate_intellij-idea-ultimate.desktop', 'storage-explorer_storage-explorer.desktop', 'authy_authy.desktop', 'slack_slack.desktop']
+    state: present

@@ -32,6 +32,9 @@ snaps_development:
     channel: "beta"
   - name: "kubectl"
     classic: "yes"
+  - name: "librepcb"
+  - name: "grv"
+  - name: "k9s"
 snaps_web_browsers:
   - name: "chromium"
 snaps_web_browsers_plugs:
