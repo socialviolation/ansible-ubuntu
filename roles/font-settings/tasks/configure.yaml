@@ -2,23 +2,29 @@
 - name: Configure fonts - Interface Text
   dconf:
     key: "/org/gnome/desktop/interface/font-name"
-    value: "'Roboto Mono Bold 11'"
+    value: "'Ubuntu Light 11'"
     state: present
 
 - name: Configure fonts - Document Text
   dconf:
     key: "/org/gnome/desktop/interface/document-font-name"
-    value: "'Roboto Mono Regular 9'"
+    value: "'Ubuntu Light 9'"
     state: present
 
 - name: Configure fonts - Monospace Text
   dconf:
     key: "/org/gnome/desktop/interface/monospace-font-name"
-    value: "'Roboto Mono Regular 9'"
+    value: "'Roboto Mono Thin for Powerline Thin 9'"
     state: present
 
 - name: Configure fonts - Window Title
   dconf:
     key: "/org/gnome/desktop/wm/preferences/titlebar-font"
-    value: "'Roboto Mono Regular 11'"
+    value: "'Ubuntu Light 11'"
+    state: present
+
+- name: Configure Scaling
+  dconf:
+    key: "/org/gnome/desktop/interface/text-scaling-factor"
+    value: "0.9"
     state: present

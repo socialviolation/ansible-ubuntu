@@ -5,7 +5,12 @@ apt_packages:
   - apt-transport-https
   - fzf
   - tmux
+  - tig
   - xclip
   - neovim
   - python-neovim
   - python3-neovim
+debs:
+  - name: "dotnet3.1"
+  
+    

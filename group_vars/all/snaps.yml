@@ -27,6 +27,11 @@ snaps_development:
     classic: "yes"
   - name: "webstorm"
     classic: "yes"
+  - name: "storage-explorer"
+  - name: "fasd"
+    channel: "beta"
+  - name: "kubectl"
+    classic: "yes"
 snaps_web_browsers:
   - name: "chromium"
 snaps_web_browsers_plugs:
